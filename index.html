@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyan - Jasa Promosi Video YouTube & Growth Partner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#FF0000',
+                            darkRed: '#CC0000',
+                            dark: '#0F0F0F',
+                            card: '#1F1F1F',
+                            accent: '#3EA6FF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0F0F0F;
+            color: #FFFFFF;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f1f1f;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3f3f3f;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #5f5f5f;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-1 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-red-600 selection:text-white min-h-screen flex flex-col justify-between custom-scrollbar">
+
+    <!-- HEADER NAVBAR -->
+    <header class="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="filterCategory('all')">
+                <div class="w-10 h-10 bg-red-600 rounded-2xl flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-red-600/30">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold leading-none tracking-wide text-white">JOYAN</h1>
+                    <p class="text-[10px] sm:text-xs text-red-500 font-semibold tracking-wider uppercase mt-0.5">Jasa Promosi Video YouTube</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold text-zinc-300">
+                <a href="#promoted-videos" class="hover:text-red-500 transition">Video Dipromosikan</a>
+                <a href="#pricing" class="hover:text-red-500 transition">Paket & Harga</a>
+                <a href="#order-form" class="hover:text-red-500 transition">Pesan Jasa</a>
+                <a href="#faq" class="hover:text-red-500 transition">FAQ</a>
+            </nav>
+
+            <!-- Search & Actions -->
+            <div class="flex items-center space-x-3">
+                <!-- User Account Status -->
+                <div id="userAccountSection" class="flex items-center space-x-2">
+                    <button onclick="openAuthModal()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 py-2.5 rounded-full transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-user-circle text-red-500"></i>
+                        <span id="authBtnText">Daftar / Masuk</span>
+                    </button>
+                </div>
+
+                <a href="#pricing" class="hidden sm:flex bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full transition shadow-lg shadow-red-600/20 items-center space-x-1.5">
+                    <i class="fa-solid fa-fire text-xs"></i>
+                    <span>Pasang Iklan</span>
+                </a>
+                <!-- Toggle Dashboard Modal -->
+                <button onclick="toggleAdminModal()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 py-2.5 rounded-full transition flex items-center space-x-1.5 relative" title="Dasbor Admin Joyan">
+                    <i class="fa-solid fa-gauge-high text-amber-400"></i>
+                    <span class="hidden sm:inline font-semibold">Dasbor Admin</span>
+                    <span id="pendingBadgeCount" class="bg-red-600 text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO PROMOTER PROFILE BANNER -->
+    <section class="relative bg-gradient-to-r from-zinc-950 via-zinc-900 to-red-950/40 border-b border-zinc-800/80 py-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                <div class="relative">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-red-600 via-orange-500 to-amber-400 p-1 shadow-2xl glow-red">
+                        <div class="w-full h-full bg-zinc-900 rounded-full flex items-center justify-center overflow-hidden">
+                            <span class="text-3xl font-extrabold text-white tracking-wider">JY</span>
+                        </div>
+                    </div>
+                    <span class="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 border-2 border-zinc-900 rounded-full flex items-center justify-center text-[10px] text-white" title="Promoter Aktif">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+                <div>
+                    <div class="flex items-center justify-center sm:justify-start space-x-2">
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Joyan</h2>
+                        <i class="fa-solid fa-circle-check text-blue-400 text-lg" title="Promoter Terverifikasi"></i>
+                    </div>
+                    <p class="text-zinc-300 text-xs sm:text-sm mt-1 max-w-xl leading-relaxed">
+                        Ingin Video YouTube-mu Banjir View & Subscriber? Joyan siap bantu promosikan video Anda ke jutaan penonton potensial.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-3 text-xs text-zinc-400">
+                        <span class="bg-zinc-800/80 px-3 py-1 rounded-full border border-zinc-700/50">
+                            <i class="fa-solid fa-video text-red-500 mr-1.5"></i>
+                            <strong id="totalVideoCount" class="text-white">0</strong> Video Promosi
+                        </span>
+                        <span class="bg-zinc-800/80 px-3 py-1 rounded-full border border-zinc-700/50">
+                            <i class="fa-solid fa-eye text-emerald-400 mr-1.5"></i> 100K+ Total Reach
+                        </span>
+                        <span class="bg-zinc-800/80 px-3 py-1 rounded-full border border-zinc-700/50">
+                            <i class="fa-solid fa-star text-amber-400 mr-1.5"></i> 4.9 Rating Client
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct CTA to Monetize -->
+            <div class="flex flex-col gap-3 w-full sm:w-auto">
+                <a href="#pricing" class="bg-red-600 hover:bg-red-700 text-white text-sm font-bold px-6 py-3.5 rounded-2xl flex items-center justify-center space-x-3 transition shadow-xl shadow-red-600/30">
+                    <i class="fa-solid fa-rocket text-base"></i>
+                    <span>Promosikan Videomu Sekarang</span>
+                </a>
+                <a href="https://wa.me/?text=Halo%20Joyan,%20saya%20mau%20tanya%20harga%20jasa%20promosi%20video%20YouTube" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-6 py-2.5 rounded-2xl flex items-center justify-center space-x-2 transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Konsultasi Gratis via WA</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AD BANNER MONETIZATION SLOT 1 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border border-amber-500/30 rounded-2xl p-4 text-center relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-500/20 text-amber-400 p-2.5 rounded-xl text-xl">
+                    <i class="fa-solid fa-rectangle-ad"></i>
+                </div>
+                <div class="text-left">
+                    <span class="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Slot Iklan Banner Available</span>
+                    <p class="text-xs text-zinc-300 font-medium mt-1">Sewa slot banner ini untuk mempromosikan produk/website kamu di sini!</p>
+                </div>
+            </div>
+            <a href="https://wa.me/?text=Halo%20Joyan,%20saya%20mau%20sewa%20slot%20banner%20iklan%20di%20website" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-black text-xs font-bold px-4 py-2 rounded-xl transition whitespace-nowrap">
+                Sewa Banner Ini
+            </a>
+        </div>
+    </div>
+
+    <!-- SEARCH & CATEGORY FILTER -->
+    <div id="promoted-videos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+            <!-- Filter Categories -->
+            <div class="flex items-center space-x-2 overflow-x-auto custom-scrollbar pb-2 w-full md:w-auto" id="categoryContainer">
+                <!-- Dynamic Category Buttons -->
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full md:w-72">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Cari video promosi..." 
+                    class="w-full bg-zinc-900 text-xs text-zinc-200 placeholder-zinc-500 rounded-xl py-2.5 pl-9 pr-4 border border-zinc-800 focus:outline-none focus:border-red-600 transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-zinc-500 text-xs"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN VIDEO PROMOTION GRID -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 flex-1 w-full">
+        <!-- Section Header -->
+        <div class="flex items-center justify-between mb-6 pb-2 border-b border-zinc-800">
+            <h3 id="sectionTitle" class="text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-fire text-red-500"></i>
+                <span>Semua Video Promosi Active</span>
+            </h3>
+            <span id="resultCount" class="text-xs text-zinc-400 bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full">0 Video Ditampilkan</span>
+        </div>
+
+        <!-- Video Grid Dynamic -->
+        <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic Video Cards -->
+        </div>
+
+        <!-- Empty Video State -->
+        <div id="emptyState" class="hidden text-center py-16 border-2 border-dashed border-zinc-800 rounded-3xl mt-6">
+            <i class="fa-solid fa-film text-4xl text-zinc-600 mb-3"></i>
+            <h4 class="text-base font-bold text-zinc-300">Video Tidak Ditemukan</h4>
+            <p class="text-xs text-zinc-500 mt-1">Coba gunakan kata kunci pencarian lain atau ganti kategori.</p>
+        </div>
+    </main>
+
+    <!-- ADMIN DASHBOARD MODAL WITH PENDING & REJECTED QUEUE -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto custom-scrollbar">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl my-auto">
+            <!-- Header Tab Navigation -->
+            <div class="p-4 sm:p-5 border-b border-zinc-800 bg-zinc-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-red-600 flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-amber-500/20">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white flex items-center gap-2">
+                            <span>Dasbor Pengelolaan Promosi Joyan</span>
+                        </h3>
+                        <p class="text-[11px] text-zinc-400">Kelola video tertunda (pending), video ditolak, dan tayangkan ke pengunjung situs.</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 w-full sm:w-auto justify-between sm:justify-end overflow-x-auto">
+                    <div class="flex bg-zinc-900 p-1 rounded-xl border border-zinc-800 text-xs">
+                        <button id="tabPendingBtn" onclick="switchAdminTab('pending')" class="px-3 py-1.5 rounded-lg font-bold transition bg-amber-500 text-black">
+                            <i class="fa-solid fa-clock-rotate-left mr-1"></i> Tertunda (<span id="pendingTabBadge">0</span>)
+                        </button>
+                        <button id="tabRejectedBtn" onclick="switchAdminTab('rejected')" class="px-3 py-1.5 rounded-lg font-medium text-zinc-400 hover:text-white transition">
+                            <i class="fa-solid fa-ban mr-1"></i> Ditolak (<span id="rejectedTabBadge">0</span>)
+                        </button>
+                        <button id="tabAddBtn" onclick="switchAdminTab('add')" class="px-3 py-1.5 rounded-lg font-medium text-zinc-400 hover:text-white transition">
+                            <i class="fa-solid fa-plus-circle mr-1"></i> Tambah Manual
+                        </button>
+                    </div>
+                    <button onclick="toggleAdminModal()" class="text-zinc-400 hover:text-white p-2 transition">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 1: PENDING VIDEOS QUEUE -->
+            <div id="tabPendingContent" class="p-4 sm:p-6 space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
+                <div class="flex items-center justify-between border-b border-zinc-800/80 pb-3">
+                    <div>
+                        <h4 class="text-sm font-bold text-white">Daftar Antrean Video Tertunda</h4>
+                        <p class="text-xs text-zinc-400">Video yang diajukan klien melalui formulir akan masuk di sini terlebih dahulu.</p>
+                    </div>
+                    <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full font-medium">
+                        Status: Menunggu Persetujuan
+                    </span>
+                </div>
+
+                <!-- Pending List Grid -->
+                <div id="pendingList" class="space-y-3">
+                    <!-- Dynamic Pending Cards -->
+                </div>
+
+                <!-- Empty Pending State -->
+                <div id="emptyPending" class="hidden text-center py-12 border-2 border-dashed border-zinc-800 rounded-2xl">
+                    <i class="fa-solid fa-inbox text-3xl text-zinc-600 mb-2"></i>
+                    <p class="text-xs text-zinc-400 font-medium">Tidak ada video yang tertunda saat ini.</p>
+                    <p class="text-[11px] text-zinc-500 mt-0.5">Pesanan baru dari klien akan muncul di sini secara otomatis.</p>
+                </div>
+            </div>
+
+            <!-- TAB 2: REJECTED VIDEOS QUEUE -->
+            <div id="tabRejectedContent" class="hidden p-4 sm:p-6 space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
+                <div class="flex items-center justify-between border-b border-zinc-800/80 pb-3">
+                    <div>
+                        <h4 class="text-sm font-bold text-white">Daftar Video yang Ditolak</h4>
+                        <p class="text-xs text-zinc-400">Arsip video yang tidak disetujui atau dibatalkan promosinya.</p>
+                    </div>
+                    <span class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 rounded-full font-medium">
+                        Status: Ditolak
+                    </span>
+                </div>
+
+                <!-- Rejected List Grid -->
+                <div id="rejectedList" class="space-y-3">
+                    <!-- Dynamic Rejected Cards -->
+                </div>
+
+                <!-- Empty Rejected State -->
+                <div id="emptyRejected" class="hidden text-center py-12 border-2 border-dashed border-zinc-800 rounded-2xl">
+                    <i class="fa-solid fa-circle-xmark text-3xl text-zinc-600 mb-2"></i>
+                    <p class="text-xs text-zinc-400 font-medium">Belum ada video yang ditolak.</p>
+                </div>
+            </div>
+
+            <!-- TAB 3: MANUAL ADD FORM -->
+            <div id="tabAddContent" class="hidden p-4 sm:p-6 space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
+                <form id="addVideoForm" onsubmit="handleAddVideo(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Link atau ID Video YouTube *</label>
+                        <input type="text" id="inputUrl" placeholder="Contoh: https://www.youtube.com/watch?v=dQw4w9WgXcQ" required
+                            class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-300 mb-1">Judul Video *</label>
+                            <input type="text" id="inputTitle" placeholder="Masukkan judul video..." required
+                                class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-300 mb-1">Nama Channel / Pemilik *</label>
+                            <input type="text" id="inputChannel" placeholder="Nama channel YouTube..." required
+                                class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-300 mb-1">Kategori *</label>
+                            <select id="inputCategory" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                                <option value="Musik">Musik</option>
+                                <option value="Gaming">Gaming</option>
+                                <option value="Edukasi">Edukasi</option>
+                                <option value="Vlog">Vlog</option>
+                                <option value="Teknologi">Teknologi</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-300 mb-1">Status Badge / Highlight</label>
+                            <select id="inputBadge" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                                <option value="Hot">🔥 Hot Promo</option>
+                                <option value="New">✨ Terbaru</option>
+                                <option value="Featured">⭐ Unggulan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Deskripsi Singkat</label>
+                        <textarea id="inputDesc" rows="3" placeholder="Tuliskan catatan promosi..."
+                            class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition custom-scrollbar"></textarea>
+                    </div>
+
+                    <div class="pt-3 flex items-center justify-end space-x-3 border-t border-zinc-800">
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-5 py-2.5 rounded-xl transition shadow-lg shadow-red-600/30 flex items-center space-x-2">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                            <span>Langsung Promosikan (Aktif)</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICING & PROMOTION PACKAGES -->
+    <section id="pricing" class="bg-zinc-950 border-t border-b border-zinc-800 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-red-500 text-xs font-bold uppercase tracking-wider bg-red-600/10 px-3 py-1 rounded-full border border-red-500/20">Layanan Jasa Promosi</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Pilih Paket Promosi Video Anda</h2>
+                <p class="text-zinc-400 text-xs sm:text-sm mt-2">Tersedia pilihan paket gratis maupun berbayar untuk meningkatkan penonton nyata dan engagement video YouTube Anda.</p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Free Package -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between hover:border-zinc-700 transition">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-base font-bold text-zinc-300">Paket Gratis / Trial</h4>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-bold">Free</span>
+                        </div>
+                        <div class="mt-4 mb-6">
+                            <span class="text-3xl font-extrabold text-white">Rp 0</span>
+                            <span class="text-xs text-zinc-500">/ 1 Hari Promosi</span>
+                        </div>
+                        <ul class="space-y-3 text-xs text-zinc-300 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Tampil di Website Ini (1 Hari)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Badge "✨ Free Trial"</li>
+                            <li class="flex items-center text-zinc-600"><i class="fa-solid fa-xmark mr-2"></i> Share ke Story Media Sosial</li>
+                            <li class="flex items-center text-zinc-600"><i class="fa-solid fa-xmark mr-2"></i> Rekomendasi Prioritas</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/?text=Halo%20Joyan,%20saya%20mau%20coba%20*Paket%20Gratis%20(Rp%200)*%20untuk%20video%20saya" target="_blank" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold py-3 rounded-2xl text-center transition">
+                        Ambil Paket Gratis
+                    </a>
+                </div>
+
+                <!-- Starter Package -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between hover:border-zinc-700 transition">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-base font-bold text-zinc-300">Paket Starter</h4>
+                            <span class="text-xs bg-zinc-800 text-zinc-400 px-2.5 py-1 rounded-full">Pemula</span>
+                        </div>
+                        <div class="mt-4 mb-6">
+                            <span class="text-3xl font-extrabold text-white">Rp 50.000</span>
+                            <span class="text-xs text-zinc-500">/ 3 Hari</span>
+                        </div>
+                        <ul class="space-y-3 text-xs text-zinc-300 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Tampil di Website Ini (3 Hari)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Badge "✨ Terbaru"</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Share ke Story Medsos</li>
+                            <li class="flex items-center text-zinc-600"><i class="fa-solid fa-xmark mr-2"></i> Rekomendasi Prioritas Utama</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/?text=Halo%20Joyan,%20saya%20mau%20pesan%20*Paket%20Starter%20(Rp%2050.000)*%20untuk%20video%20saya" target="_blank" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold py-3 rounded-2xl text-center transition">
+                        Pesan Starter
+                    </a>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="bg-gradient-to-b from-red-950/40 to-zinc-900 border-2 border-red-600 rounded-3xl p-6 flex flex-col justify-between shadow-xl relative sm:scale-105">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-red-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">
+                        Paling Laris 🔥
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-base font-bold text-white">Paket Premium</h4>
+                            <span class="text-xs bg-red-600/30 text-red-400 px-2.5 py-1 rounded-full border border-red-500/30">Popular</span>
+                        </div>
+                        <div class="mt-4 mb-6">
+                            <span class="text-3xl font-extrabold text-white">Rp 100.000</span>
+                            <span class="text-xs text-zinc-400">/ 7 Hari</span>
+                        </div>
+                        <ul class="space-y-3 text-xs text-zinc-200 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Tampil di Website Ini (7 Hari)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Badge "🔥 HOT Promo"</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Share Community Feed</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Rekomendasi Teratas</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/?text=Halo%20Joyan,%20saya%20mau%20pesan%20*Paket%20Premium%20(Rp%20100.000)*%20untuk%20video%20saya" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-3 rounded-2xl text-center transition shadow-lg shadow-red-600/40">
+                        Pesan Premium
+                    </a>
+                </div>
+
+                <!-- Gold VIP Package -->
+                <div class="bg-zinc-900 border border-amber-500/40 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500 transition">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-base font-bold text-amber-400">Paket VIP</h4>
+                            <span class="text-xs bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-full">VIP</span>
+                        </div>
+                        <div class="mt-4 mb-6">
+                            <span class="text-3xl font-extrabold text-white">Rp 250.000</span>
+                            <span class="text-xs text-zinc-500">/ 30 Hari</span>
+                        </div>
+                        <ul class="space-y-3 text-xs text-zinc-300 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Tampil / 30 Hari Full</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Badge "⭐ Featured VIP"</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Full Broadcast Promotion</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Review & Reaction Khusus</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/?text=Halo%20Joyan,%20saya%20mau%20pesan%20*Paket%20VIP%20(Rp%20250.000)*%20untuk%20video%20saya" target="_blank" class="w-full bg-amber-500 hover:bg-amber-600 text-black text-xs font-bold py-3 rounded-2xl text-center transition">
+                        Pesan VIP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDER SUBMISSION FORM -->
+    <section id="order-form" class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <h3 class="text-xl font-bold text-white flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-red-500"></i>
+                    <span>Formulir Pengajuan Promosi Video</span>
+                </h3>
+                <p class="text-xs text-zinc-400 mt-1">Pilih paket gratis atau berbayar, lalu kirimkan detail video Anda.</p>
+            </div>
+
+            <form id="clientOrderForm" onsubmit="handleClientOrder(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Nama Lengkap / Channel *</label>
+                        <input type="text" id="orderName" required placeholder="Contoh: Gaming Channel ID"
+                            class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Nomor WhatsApp *</label>
+                        <input type="tel" id="orderWa" required placeholder="08123456789"
+                            class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-zinc-300 mb-1">Link Video YouTube *</label>
+                    <input type="url" id="orderUrl" required placeholder="https://www.youtube.com/watch?v=..."
+                        class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Pilih Paket Promosi *</label>
+                        <select id="orderPackage" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                            <option value="Paket Gratis (Rp 0 - 1 Hari)">Paket Gratis (Rp 0 / 1 Hari)</option>
+                            <option value="Paket Starter (Rp 50.000)">Paket Starter (Rp 50.000 / 3 Hari)</option>
+                            <option value="Paket Premium (Rp 100.000)">Paket Premium (Rp 100.000 / 7 Hari)</option>
+                            <option value="Paket VIP (Rp 250.000)">Paket VIP (Rp 250.000 / 30 Hari)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Kategori Video *</label>
+                        <select id="orderCategory" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition">
+                            <option value="Musik">Musik</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Edukasi">Edukasi</option>
+                            <option value="Vlog">Vlog</option>
+                            <option value="Teknologi">Teknologi</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-zinc-300 mb-1">Catatan Tambahan (Opsional)</label>
+                    <textarea id="orderNote" rows="2" placeholder="Catatan atau permintaan khusus promosi..."
+                        class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 transition custom-scrollbar"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs sm:text-sm py-3.5 rounded-2xl transition shadow-lg shadow-emerald-900/30 flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Kirim Pesanan via WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="bg-zinc-950 py-16 px-4 sm:px-6 lg:px-8 border-t border-zinc-800/80">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-red-500 text-xs font-bold uppercase tracking-wider bg-red-600/10 px-3 py-1 rounded-full border border-red-500/20">Informasi Penting</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Pertanyaan Sering Diajukan (FAQ)</h3>
+                <p class="text-zinc-400 text-xs sm:text-sm mt-2">Segala sesuatu yang perlu Anda ketahui mengenai syarat & ketentuan jasa promosi Joyan.</p>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                    <h4 class="font-bold text-white text-sm sm:text-base mb-2 flex items-center"><i class="fa-solid fa-circle-xmark text-red-500 mr-2.5 text-lg"></i> Apakah Konten Buatan AI / Bot Otomatis Diperbolehkan?</h4>
+                    <p class="text-zinc-300 leading-relaxed"><strong>Sangat DILARANG keras!</strong> Joyan tidak menerima video berjenis spam buatan AI, konten rekaman otomatis tanpa narasi asli, atau video berkualitas sangat rendah. Kami berkomitmen menyajikan konten manusia asli (real human creator) yang berkualitas bagi para penonton.</p>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                    <h4 class="font-bold text-white text-sm sm:text-base mb-2 flex items-center"><i class="fa-solid fa-circle-question text-red-500 mr-2.5 text-lg"></i> Bagaimana Cara Kerja Promosi Video di Joyan?</h4>
+                    <p class="text-zinc-300 leading-relaxed">Video Anda akan ditayangkan di beranda situs Joyan, direkomendasikan kepada ribuan pengunjung harian, dan dibagikan ke jaringan sosial media kami sesuai paket yang Anda pilih untuk mendatangkan penonton organik secara bertahap.</p>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                    <h4 class="font-bold text-white text-sm sm:text-base mb-2 flex items-center"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2.5 text-lg"></i> Apakah Promosi Ini Aman untuk Monetisasi YouTube?</h4>
+                    <p class="text-zinc-300 leading-relaxed">Sangat aman 100%. Semua trafik dan penonton berasal dari manusia asli yang mengklik video di situs ini. Kami tidak pernah menggunakan bot, *click farm*, atau cara manipulatif yang melanggar Pedoman Komunitas & Monetisasi YouTube.</p>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                    <h4 class="font-bold text-white text-sm sm:text-base mb-2 flex items-center"><i class="fa-solid fa-clock text-amber-400 mr-2.5 text-lg"></i> Berapa Lama Masa Tayang Video Promosi Saya?</h4>
+                    <p class="text-zinc-300 leading-relaxed">Sesuai paket yang dipilih: Paket Gratis (1 Hari), Paket Starter (3 Hari), Paket Premium (7 Hari), dan Paket VIP (30 Hari Full). Setelah masa berlaku habis, indikator akan berubah menjadi <strong>Lampu Merah (🔴 Promosi Selesai)</strong>.</p>
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                    <h4 class="font-bold text-white text-sm sm:text-base mb-2 flex items-center"><i class="fa-solid fa-user-check text-blue-400 mr-2.5 text-lg"></i> Mengapa Akun Harus Diaktifkan Lewat WhatsApp Dulu?</h4>
+                    <p class="text-zinc-300 leading-relaxed">Verifikasi WhatsApp dilakukan untuk mencegah pendaftaran akun spam/bot dan memastikan hanya kreator asli yang mengajukan video di platform Joyan demi menjaga keamanan dan kualitas situs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEBSITE REVIEWS & COMMENT SECTION -->
+    <section id="reviews" class="bg-zinc-900/50 py-16 px-4 sm:px-6 lg:px-8 border-t border-zinc-800/80">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-wider bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">Ulasan & Feedback</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Komentar & Pengalaman Kreator</h3>
+                <p class="text-zinc-400 text-xs sm:text-sm mt-2">Lihat tanggapan dari para kreator yang sudah mendaftarkan video mereka di Joyan.</p>
+            </div>
+
+            <!-- Comment Input Box -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 mb-8 shadow-xl">
+                <h4 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-comment-dots text-red-500"></i>
+                    <span>Tulis Komentar atau Ulasan Anda</span>
+                </h4>
+                <form id="commentForm" onsubmit="handleAddComment(event)" class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="commentAuthor" placeholder="Nama Anda / Nama Channel *" required class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-red-500">
+                        <select id="commentRating" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-amber-400 focus:outline-none focus:border-red-500">
+                            <option value="5">⭐⭐⭐⭐⭐ (5 / 5 Sangat Puas)</option>
+                            <option value="4">⭐⭐⭐⭐ (4 / 5 Bagus)</option>
+                            <option value="3">⭐⭐⭐ (3 / 5 Cukup)</option>
+                        </select>
+                    </div>
+                    <textarea id="commentText" rows="3" placeholder="Bagikan tanggapan Anda tentang layanan promosi video Joyan..." required class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 custom-scrollbar"></textarea>
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition shadow-lg shadow-red-600/30 flex items-center space-x-2 ml-auto">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>Kirim Komentar</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Dynamic Comments List -->
+            <div id="commentsContainer" class="space-y-4">
+                <!-- Dynamic Comment Cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO PLAY MODAL -->
+    <div id="videoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative flex flex-col max-h-[90vh]">
+            <div class="p-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-950">
+                <h3 id="modalVideoTitle" class="text-sm sm:text-base font-bold text-white line-clamp-1 pr-4">Judul Video</h3>
+                <button onclick="closeVideoModal()" class="text-zinc-400 hover:text-white p-1 transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="relative w-full bg-black aspect-video">
+                <iframe id="youtubeIframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1 bg-zinc-900">
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-zinc-800">
+                    <div>
+                        <span id="modalVideoCategory" class="text-xs bg-red-600/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-medium">Kategori</span>
+                        <p id="modalVideoChannel" class="text-xs text-zinc-400 mt-2"><i class="fa-brands fa-youtube text-red-500 mr-1"></i> Channel Owner</p>
+                    </div>
+                    <a id="modalYoutubeLink" href="#" target="_blank" rel="noopener" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                        <i class="fa-brands fa-youtube text-base"></i>
+                        <span>Buka di YouTube</span>
+                    </a>
+                </div>
+                <div class="mt-4">
+                    <h4 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">Deskripsi Promosi</h4>
+                    <p id="modalVideoDesc" class="text-xs sm:text-sm text-zinc-300 whitespace-pre-line leading-relaxed">Deskripsi lengkap video.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTHENTICATION & ACCOUNT REGISTRATION MODAL -->
+    <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-md w-full overflow-hidden shadow-2xl relative">
+            <div class="p-4 sm:p-5 border-b border-zinc-800 flex items-center justify-between bg-zinc-950">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white text-sm font-bold">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Akun Website & Aktivasi Joyan</h3>
+                </div>
+                <button onclick="closeAuthModal()" class="text-zinc-400 hover:text-white p-1 transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Auth Tabs -->
+            <div class="flex bg-zinc-950 p-2 border-b border-zinc-800 text-xs font-semibold">
+                <button id="tabRegisterBtn" onclick="switchAuthTab('register')" class="flex-1 py-2 rounded-xl transition bg-red-600 text-white">Daftar Akun Baru</button>
+                <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-2 rounded-xl transition text-zinc-400 hover:text-white">Masuk Akun</button>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerFormContainer" class="p-6">
+                <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Nama Lengkap / Channel *</label>
+                        <input type="text" id="regName" required placeholder="Nama Anda" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Alamat Email *</label>
+                        <input type="email" id="regEmail" required placeholder="nama@email.com" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Kata Sandi *</label>
+                        <input type="password" id="regPassword" required placeholder="••••••••" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 text-[11px] text-amber-300 leading-relaxed">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Setelah daftar, Anda wajib <strong>menghubungi Joyan via WhatsApp</strong> agar akun Anda diaktifkan dan diverifikasi untuk bisa mengajukan promosi!
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-3 rounded-xl transition shadow-lg shadow-red-600/30">
+                        Daftar & Minta Aktivasi WhatsApp
+                    </button>
+                </form>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginFormContainer" class="hidden p-6">
+                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Alamat Email *</label>
+                        <input type="email" id="loginEmail" required placeholder="nama@email.com" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-300 mb-1">Kata Sandi *</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-3 rounded-xl transition shadow-lg shadow-red-600/30">
+                        Masuk ke Akun
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 border-t border-zinc-800/80 py-10 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <h4 class="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
+                    <i class="fa-brands fa-youtube text-red-600 text-lg"></i>
+                    <span>Joyan - Official YouTube Promoter</span>
+                </h4>
+                <p class="text-xs text-zinc-500 mt-1">Layanan promosi video profesional untuk meningkatkan views dan engagement YouTube secara cepat & aman.</p>
+            </div>
+            <div class="text-xs text-zinc-500">
+                &copy; 2026 Joyan. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Global Categories List
+        const categories = ["Semua", "Musik", "Gaming", "Edukasi", "Vlog", "Teknologi", "Lainnya"];
+
+        // Initial Active Promoted Videos List
+        const defaultVideos = [
+            {
+                id: "M7lc1UVf-VE",
+                title: "Jalur Gaib & Penelusuran Misteri Malam Jumat",
+                channel: "Sara Wijayanto",
+                category: "Vlog",
+                badge: "Hot",
+                status: "active",
+                description: "Penelusuran gaib eksklusif bersama tim Sara Wijayanto. Menyingkap tabir misteri tempat bersejarah."
+            },
+            {
+                id: "dQw4w9WgXcQ",
+                title: "Curhat Bang: Rahasia Sukses & Perjuangan Karir",
+                channel: "Denny Sumargo",
+                category: "Edukasi",
+                badge: "Featured",
+                status: "active",
+                description: "Obrolan mendalam dan penuh inspirasi bersama para tokoh inspiratif Indonesia."
+            },
+            {
+                id: "L_LUpnjgPso",
+                title: "Short Film & Inspirasi Seni Peran Indonesia",
+                channel: "Dian Sastrowardoyo",
+                category: "Edukasi",
+                badge: "New",
+                status: "active",
+                description: "Video eksplorasi seni dan peran di industri film Indonesia dari Herwan & Dian Sastrowardoyo."
+            },
+            {
+                id: "kJQP7kiw5Fk",
+                title: "Despacito - Official Cover & Musical Project",
+                channel: "Carlos Mendez",
+                category: "Musik",
+                badge: "Hot",
+                status: "completed",
+                description: "Project promosi lagu musik akustik Latin dari kreator internasional."
+            }
+        ];
+
+        // Initial Pending Videos Queue (Inklud Indonesia & Luar Negeri)
+        const defaultPendingVideos = [
+            {
+                pendingId: "p1",
+                id: "3JZ_D3ELwOQ",
+                title: "Eksplorasi Game Horror Indonesia - DreadOut 2",
+                channel: "Rian Gaming ID",
+                category: "Gaming",
+                badge: "Hot",
+                package: "Paket Premium (Rp 100.000)",
+                clientName: "Rian Gaming",
+                clientWa: "081299887766",
+                note: "Mohon segera dipromosikan mas Joyan!",
+                description: "Gameplay horror asli Indonesia dengan narasi seru."
+            },
+            {
+                pendingId: "p2",
+                id: "fJ9rUzIMcDQ",
+                title: "Acoustic Live Cover - Hits Popular 2026",
+                channel: "Sarah Jenkins (UK)",
+                category: "Musik",
+                badge: "New",
+                package: "Paket VIP (Rp 250.000)",
+                clientName: "Sarah J",
+                clientWa: "+447911123456",
+                note: "Promote for Indonesian music lovers please.",
+                description: "Sesi live vokal akustik dari penyanyi independen Inggris."
+            },
+            {
+                pendingId: "p3",
+                id: "2Vv-BfVoq4g",
+                title: "Tutorial Coding Web Responsive dari Nol",
+                channel: "Budi Santoso Tech",
+                category: "Teknologi",
+                badge: "Featured",
+                package: "Paket Starter (Rp 50.000)",
+                clientName: "Budi Santoso",
+                clientWa: "085711223344",
+                note: "Promosi edukasi pemrograman.",
+                description: "Panduan praktis belajar HTML, CSS, dan Javascript."
+            }
+        ];
+
+        // Load Persisted Data or Fallback to Defaults
+        let videos = JSON.parse(localStorage.getItem('joyan_promoted_videos')) || defaultVideos;
+        let pendingVideos = JSON.parse(localStorage.getItem('joyan_pending_videos')) || defaultPendingVideos;
+        let rejectedVideos = JSON.parse(localStorage.getItem('joyan_rejected_videos')) || [];
+        let registeredUsers = JSON.parse(localStorage.getItem('joyan_registered_users')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('joyan_current_user')) || null;
+
+        let selectedCategory = "all";
+        let searchQuery = "";
+
+        // Initial Comments List
+        const initialComments = [
+            {
+                id: "c1",
+                author: "Rian Gaming ID",
+                rating: 5,
+                date: "Hari ini",
+                text: "Mantap banget promo di Joyan! Baru coba paket starter 3 hari, views di video saya naik drastis dan dapet puluhan subscriber murni penonton Indonesia."
+            },
+            {
+                id: "c2",
+                author: "Sarah Akustik",
+                rating: 5,
+                date: "Kemarin",
+                text: "Pelayanannya ramah dan fast response via WA. Seneng banget aturan di sini ketat dilarang konten AI spam, jadi kualitas websitinya bener-bener terjaga."
+            },
+            {
+                id: "c3",
+                author: "Dms Horror Fanbase",
+                rating: 5,
+                date: "2 hari lalu",
+                text: "Rekomended buat penelusuran horor & vlog. Langsung dapat respon hangat dari penonton baru. Sukses terus buat Joyan!"
+            }
+        ];
+
+        let comments = JSON.parse(localStorage.getItem('joyan_comments')) || initialComments;
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderVideos();
+            renderPendingDashboard();
+            renderRejectedDashboard();
+            renderComments();
+            updateUserUI();
+        });
+
+        // Render Comments List
+        function renderComments() {
+            const container = document.getElementById('commentsContainer');
+            if (!container) return;
+
+            container.innerHTML = comments.map(c => `
+                <div class="bg-zinc-900 border border-zinc-800/80 rounded-2xl p-4 sm:p-5 shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-red-600/20 text-red-500 font-bold flex items-center justify-center text-xs">
+                                ${c.author.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                                <h5 class="text-xs sm:text-sm font-bold text-white">${c.author}</h5>
+                                <span class="text-[10px] text-zinc-500">${c.date || 'Baru saja'}</span>
+                            </div>
+                        </div>
+                        <div class="text-amber-400 text-xs">
+                            ${'⭐'.repeat(c.rating)}
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed mt-1">${c.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // Handle Add New Comment
+        function handleAddComment(e) {
+            e.preventDefault();
+            const author = document.getElementById('commentAuthor').value;
+            const rating = parseInt(document.getElementById('commentRating').value);
+            const text = document.getElementById('commentText').value;
+
+            const newComment = {
+                id: "c_" + Date.now(),
+                author,
+                rating,
+                date: "Baru saja",
+                text
+            };
+
+            comments.unshift(newComment);
+            localStorage.setItem('joyan_comments', JSON.stringify(comments));
+            renderComments();
+
+            document.getElementById('commentForm').reset();
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function switchAuthTab(tab) {
+            const regContainer = document.getElementById('registerFormContainer');
+            const loginContainer = document.getElementById('loginFormContainer');
+            const regBtn = document.getElementById('tabRegisterBtn');
+            const loginBtn = document.getElementById('tabLoginBtn');
+
+            if (tab === 'register') {
+                regContainer.classList.remove('hidden');
+                loginContainer.classList.add('hidden');
+                regBtn.className = "flex-1 py-2 rounded-xl transition bg-red-600 text-white";
+                loginBtn.className = "flex-1 py-2 rounded-xl transition text-zinc-400 hover:text-white";
+            } else {
+                regContainer.classList.add('hidden');
+                loginContainer.classList.remove('hidden');
+                loginBtn.className = "flex-1 py-2 rounded-xl transition bg-red-600 text-white";
+                regBtn.className = "flex-1 py-2 rounded-xl transition text-zinc-400 hover:text-white";
+            }
+        }
+
+        // Handle User Registration & WhatsApp Activation Prompt
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+
+            if (registeredUsers.some(u => u.email === email)) {
+                alert('Email sudah terdaftar! Silakan masuk.');
+                return;
+            }
+
+            const newUser = {
+                name,
+                email,
+                password,
+                activated: false
+            };
+
+            registeredUsers.push(newUser);
+            localStorage.setItem('joyan_registered_users', JSON.stringify(registeredUsers));
+
+            currentUser = newUser;
+            localStorage.setItem('joyan_current_user', JSON.stringify(currentUser));
+
+            closeAuthModal();
+            updateUserUI();
+
+            const waText = `Halo Joyan, saya baru saja mendaftar akun dengan data berikut:\n\n` +
+                           `- Nama: ${name}\n` +
+                           `- Email: ${email}\n\n` +
+                           `Mohon bantu aktifkan akun saya agar bisa mengajukan promosi video YouTube di website! Terima kasih.`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(waText)}`, '_blank');
+        }
+
+        // Handle User Login
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const found = registeredUsers.find(u => u.email === email && u.password === password);
+            if (!found) {
+                alert('Email atau kata sandi salah!');
+                return;
+            }
+
+            currentUser = found;
+            localStorage.setItem('joyan_current_user', JSON.stringify(currentUser));
+            closeAuthModal();
+            updateUserUI();
+        }
+
+        // Logout User
+        function handleLogout() {
+            currentUser = null;
+            localStorage.removeItem('joyan_current_user');
+            updateUserUI();
+        }
+
+        // Update User UI State in Navbar
+        function updateUserUI() {
+            const container = document.getElementById('userAccountSection');
+            if (!container) return;
+            
+            if (!currentUser) {
+                container.innerHTML = `
+                    <button onclick="openAuthModal()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 py-2.5 rounded-full transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-user-circle text-red-500"></i>
+                        <span>Daftar / Masuk</span>
+                    </button>
+                `;
+            } else {
+                const statusBadge = currentUser.activated 
+                    ? '<span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-bold">Aktif</span>' 
+                    : '<span class="text-[9px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-bold">Menunggu Aktivasi WA</span>';
+                
+                container.innerHTML = `
+                    <div class="flex items-center space-x-2 bg-zinc-800/80 border border-zinc-700 px-3 py-1.5 rounded-full text-xs">
+                        <i class="fa-solid fa-user-check text-emerald-400"></i>
+                        <span class="text-white font-semibold hidden sm:inline">${currentUser.name}</span>
+                        ${statusBadge}
+                        <button onclick="handleLogout()" class="text-zinc-400 hover:text-red-400 ml-1" title="Keluar"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </div>
+                `;
+            }
+        }
+
+        // Render Category Filter Buttons
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            if (!container) return;
+            container.innerHTML = categories.map(cat => {
+                const catValue = cat === "Semua" ? "all" : cat;
+                const isActive = selectedCategory === catValue;
+                return `
+                    <button onclick="filterCategory('${catValue}')" 
+                        class="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                            isActive 
+                            ? 'bg-red-600 text-white shadow-lg shadow-red-600/30' 
+                            : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white border border-zinc-800'
+                        }">
+                        ${cat}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Filter Category
+        function filterCategory(cat) {
+            selectedCategory = cat;
+            renderCategories();
+            renderVideos();
+            
+            const titleElement = document.getElementById('sectionTitle');
+            if (titleElement) {
+                if (cat === 'all') {
+                    titleElement.innerHTML = `<i class="fa-solid fa-fire text-red-500 mr-2"></i><span>Semua Video Promosi Active</span>`;
+                } else {
+                    titleElement.innerHTML = `<i class="fa-solid fa-folder-open text-red-500 mr-2"></i><span>Video Kategori: ${cat}</span>`;
+                }
+            }
+        }
+
+        // Search Input Handler
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            renderVideos();
+        }
+
+        // Render Video Cards Grid
+        function renderVideos() {
+            const grid = document.getElementById('videoGrid');
+            const emptyState = document.getElementById('emptyState');
+            const totalCount = document.getElementById('totalVideoCount');
+            const resultCount = document.getElementById('resultCount');
+
+            if (totalCount) totalCount.textContent = videos.length;
+
+            const filtered = videos.filter(vid => {
+                const matchesCategory = selectedCategory === 'all' || vid.category === selectedCategory;
+                const matchesSearch = vid.title.toLowerCase().includes(searchQuery) || 
+                                     vid.channel.toLowerCase().includes(searchQuery) ||
+                                     vid.description.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (resultCount) resultCount.textContent = `${filtered.length} Video Ditampilkan`;
+
+            if (!grid) return;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                if (emptyState) emptyState.classList.remove('hidden');
+                return;
+            }
+
+            if (emptyState) emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map(vid => {
+                const badgeColor = vid.badge === 'Hot' ? 'bg-red-600' : vid.badge === 'New' ? 'bg-emerald-600' : 'bg-amber-500';
+                
+                const isCompleted = vid.status === 'completed';
+                const lightDotColor = isCompleted ? 'bg-red-500' : 'bg-emerald-500 animate-pulse';
+                const lightTextColor = isCompleted ? 'text-red-400' : 'text-emerald-400';
+                const lightBorderColor = isCompleted ? 'border-red-500/60 bg-red-950/80' : 'border-emerald-500/60 bg-black/80';
+                const lightStatusText = isCompleted ? '🔴 Promosi Selesai' : '🟢 Masih Dipromosikan';
+
+                return `
+                    <div class="bg-zinc-900 border ${isCompleted ? 'border-red-900/40 opacity-80' : 'border-zinc-800/80'} rounded-2xl overflow-hidden hover:border-zinc-700 transition duration-300 flex flex-col group shadow-lg">
+                        <!-- Thumbnail Container -->
+                        <div class="relative aspect-video bg-zinc-950 overflow-hidden cursor-pointer" onclick="openVideoModal('${vid.id}', '${encodeURIComponent(vid.title)}', '${encodeURIComponent(vid.channel)}', '${vid.category}', '${encodeURIComponent(vid.description)}')">
+                            <img src="https://img.youtube.com/vi/${vid.id}/mqdefault.jpg" alt="${vid.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <div class="w-12 h-12 bg-red-600/90 text-white rounded-full flex items-center justify-center text-lg shadow-xl transform group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+                            <span class="absolute top-2 left-2 ${badgeColor} text-white text-[10px] font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow">
+                                ${vid.badge}
+                            </span>
+                            <!-- Lampu Hijau (Masih Dipromosikan) atau Lampu Merah (Promosi Selesai) -->
+                            <div class="absolute top-2 right-2 backdrop-blur-md px-2.5 py-1 rounded-md flex items-center space-x-1.5 border ${lightBorderColor} shadow">
+                                <span class="w-2 h-2 rounded-full ${lightDotColor}"></span>
+                                <span class="text-[9px] ${lightTextColor} font-extrabold uppercase tracking-wider">${lightStatusText}</span>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-4 flex flex-col justify-between flex-1">
+                            <div>
+                                <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-1.5">
+                                    <span class="text-red-400 font-medium">${vid.category}</span>
+                                    <span class="text-zinc-500"><i class="fa-solid fa-bullhorn text-red-500/80 mr-1"></i> Promo</span>
+                                </div>
+                                <h4 class="text-sm font-bold text-white line-clamp-2 hover:text-red-400 cursor-pointer transition" onclick="openVideoModal('${vid.id}', '${encodeURIComponent(vid.title)}', '${encodeURIComponent(vid.channel)}', '${vid.category}', '${encodeURIComponent(vid.description)}')">
+                                    ${vid.title}
+                                </h4>
+                                <p class="text-xs text-zinc-400 mt-2 flex items-center">
+                                    <i class="fa-solid fa-circle-user text-zinc-500 mr-1.5"></i>
+                                    ${vid.channel}
+                                </p>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between gap-2">
+                                <button onclick="openVideoModal('${vid.id}', '${encodeURIComponent(vid.title)}', '${encodeURIComponent(vid.channel)}', '${vid.category}', '${encodeURIComponent(vid.description)}')" class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold py-2 rounded-xl transition flex items-center justify-center space-x-1.5">
+                                    <i class="fa-solid fa-play text-[10px]"></i>
+                                    <span>Tonton</span>
+                                </button>
+                                <a href="https://www.youtube.com/watch?v=${vid.id}" target="_blank" rel="noopener" class="p-2 text-zinc-400 hover:text-red-500 bg-zinc-800/50 hover:bg-zinc-800 rounded-xl transition" title="Buka di YouTube">
+                                    <i class="fa-brands fa-youtube text-base"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render Pending Videos List in Admin Dashboard
+        function renderPendingDashboard() {
+            const pendingList = document.getElementById('pendingList');
+            const emptyPending = document.getElementById('emptyPending');
+            const badgeCount = document.getElementById('pendingBadgeCount');
+            const tabBadge = document.getElementById('pendingTabBadge');
+
+            const count = pendingVideos.length;
+            if (badgeCount) badgeCount.textContent = count;
+            if (tabBadge) tabBadge.textContent = count;
+
+            if (!pendingList) return;
+
+            if (count === 0) {
+                pendingList.innerHTML = '';
+                if (emptyPending) emptyPending.classList.remove('hidden');
+                return;
+            }
+
+            if (emptyPending) emptyPending.classList.add('hidden');
+            pendingList.innerHTML = pendingVideos.map((item) => `
+                <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:border-amber-500/40 transition">
+                    <div class="flex items-start space-x-3.5">
+                        <img src="https://img.youtube.com/vi/${item.id}/mqdefault.jpg" class="w-24 h-16 object-cover rounded-xl border border-zinc-800 bg-zinc-900 shrink-0">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-amber-500/20 text-amber-400 text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">
+                                    <i class="fa-solid fa-hourglass-half mr-1"></i> Pending
+                                </span>
+                                <span class="text-[11px] text-zinc-400"><i class="fa-solid fa-box text-amber-500 mr-1"></i>${item.package || 'Pesanan Direct'}</span>
+                            </div>
+                            <h5 class="text-xs sm:text-sm font-bold text-white mt-1 line-clamp-1">${item.title}</h5>
+                            <p class="text-[11px] text-zinc-400 mt-0.5">Channel: <strong class="text-zinc-200">${item.channel}</strong> | Pemesan: ${item.clientName || '-'} (${item.clientWa || '-'})</p>
+                            ${item.note ? `<p class="text-[10px] text-zinc-500 italic mt-1">"${item.note}"</p>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons for Admin -->
+                    <div class="flex items-center space-x-2 w-full md:w-auto justify-end border-t md:border-t-0 pt-3 md:pt-0 border-zinc-900">
+                        <button onclick="approvePending('${item.pendingId}')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shadow-lg shadow-emerald-950">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Setujui & Promosikan</span>
+                        </button>
+                        <button onclick="rejectPending('${item.pendingId}')" class="bg-zinc-800 hover:bg-red-600/20 hover:text-red-400 text-zinc-400 text-xs px-3 py-2 rounded-xl transition" title="Tolak Video Ini">
+                            <i class="fa-solid fa-ban mr-1"></i> Tolak
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Rejected Videos List in Admin Dashboard
+        function renderRejectedDashboard() {
+            const rejectedList = document.getElementById('rejectedList');
+            const emptyRejected = document.getElementById('emptyRejected');
+            const tabBadge = document.getElementById('rejectedTabBadge');
+
+            const count = rejectedVideos.length;
+            if (tabBadge) tabBadge.textContent = count;
+
+            if (!rejectedList) return;
+
+            if (count === 0) {
+                rejectedList.innerHTML = '';
+                if (emptyRejected) emptyRejected.classList.remove('hidden');
+                return;
+            }
+
+            if (emptyRejected) emptyRejected.classList.add('hidden');
+            rejectedList.innerHTML = rejectedVideos.map((item) => `
+                <div class="bg-zinc-950 border border-red-900/30 rounded-2xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-start space-x-3.5">
+                        <img src="https://img.youtube.com/vi/${item.id}/mqdefault.jpg" class="w-24 h-16 object-cover rounded-xl border border-zinc-800 bg-zinc-900 shrink-0 opacity-60">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-red-500/20 text-red-400 text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">
+                                    <i class="fa-solid fa-circle-xmark mr-1"></i> Ditolak
+                                </span>
+                            </div>
+                            <h5 class="text-xs sm:text-sm font-bold text-zinc-300 mt-1 line-clamp-1">${item.title}</h5>
+                            <p class="text-[11px] text-zinc-500 mt-0.5">Pemesan: ${item.clientName || '-'} (${item.clientWa || '-'})</p>
+                            <p class="text-[10px] text-red-400 italic mt-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Alasan: ${item.reason || 'Ditolak oleh Admin Joyan'}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2 w-full md:w-auto justify-end">
+                        <button onclick="restoreRejected('${item.rejectedId}')" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 py-2 rounded-xl transition flex items-center space-x-1">
+                            <i class="fa-solid fa-rotate-left text-xs"></i>
+                            <span>Kembalikan ke Pending</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Approve Pending Video -> Move to Active (Green Light)
+        function approvePending(pendingId) {
+            const index = pendingVideos.findIndex(p => p.pendingId === pendingId);
+            if (index !== -1) {
+                const approved = pendingVideos.splice(index, 1)[0];
+                videos.unshift({
+                    id: approved.id,
+                    title: approved.title,
+                    channel: approved.channel,
+                    category: approved.category || "Musik",
+                    badge: approved.badge || "Hot",
+                    status: "active",
+                    description: approved.description || "Video promosi baru yang disetujui Joyan."
+                });
+
+                localStorage.setItem('joyan_promoted_videos', JSON.stringify(videos));
+                localStorage.setItem('joyan_pending_videos', JSON.stringify(pendingVideos));
+
+                renderVideos();
+                renderPendingDashboard();
+            }
+        }
+
+        // Reject Pending Video -> Move to Rejected Dashboard Queue
+        function rejectPending(pendingId) {
+            const index = pendingVideos.findIndex(p => p.pendingId === pendingId);
+            if (index !== -1) {
+                const rejected = pendingVideos.splice(index, 1)[0];
+                rejectedVideos.unshift({
+                    rejectedId: "r_" + Date.now(),
+                    id: rejected.id,
+                    title: rejected.title,
+                    channel: rejected.channel,
+                    category: rejected.category,
+                    clientName: rejected.clientName || "-",
+                    clientWa: rejected.clientWa || "-",
+                    reason: "Tidak memenuhi syarat & ketentuan promosi Joyan."
+                });
+
+                localStorage.setItem('joyan_pending_videos', JSON.stringify(pendingVideos));
+                localStorage.setItem('joyan_rejected_videos', JSON.stringify(rejectedVideos));
+
+                renderPendingDashboard();
+                renderRejectedDashboard();
+            }
+        }
+
+        // Restore Rejected Video back to Pending Queue
+        function restoreRejected(rejectedId) {
+            const index = rejectedVideos.findIndex(r => r.rejectedId === rejectedId);
+            if (index !== -1) {
+                const item = rejectedVideos.splice(index, 1)[0];
+                pendingVideos.unshift({
+                    pendingId: "p_" + Date.now(),
+                    id: item.id,
+                    title: item.title,
+                    channel: item.channel,
+                    category: item.category || "Lainnya",
+                    badge: "New",
+                    package: "Dikembalikan dari Ditolak",
+                    clientName: item.clientName,
+                    clientWa: item.clientWa,
+                    note: "Dipulihkan kembali untuk ditinjau.",
+                    description: item.title
+                });
+
+                localStorage.setItem('joyan_pending_videos', JSON.stringify(pendingVideos));
+                localStorage.setItem('joyan_rejected_videos', JSON.stringify(rejectedVideos));
+
+                renderPendingDashboard();
+                renderRejectedDashboard();
+            }
+        }
+
+        // Switch Dashboard Tabs
+        function switchAdminTab(tab) {
+            const pendingContent = document.getElementById('tabPendingContent');
+            const rejectedContent = document.getElementById('tabRejectedContent');
+            const addContent = document.getElementById('tabAddContent');
+            const pendingBtn = document.getElementById('tabPendingBtn');
+            const rejectedBtn = document.getElementById('tabRejectedBtn');
+            const addBtn = document.getElementById('tabAddBtn');
+
+            if (!pendingContent || !rejectedContent || !addContent) return;
+
+            // Reset tab styles
+            pendingBtn.className = "px-3 py-1.5 rounded-lg font-medium text-zinc-400 hover:text-white transition";
+            rejectedBtn.className = "px-3 py-1.5 rounded-lg font-medium text-zinc-400 hover:text-white transition";
+            addBtn.className = "px-3 py-1.5 rounded-lg font-medium text-zinc-400 hover:text-white transition";
+
+            pendingContent.classList.add('hidden');
+            rejectedContent.classList.add('hidden');
+            addContent.classList.add('hidden');
+
+            if (tab === 'pending') {
+                pendingContent.classList.remove('hidden');
+                pendingBtn.className = "px-3 py-1.5 rounded-lg font-bold transition bg-amber-500 text-black";
+            } else if (tab === 'rejected') {
+                rejectedContent.classList.remove('hidden');
+                rejectedBtn.className = "px-3 py-1.5 rounded-lg font-bold transition bg-red-600 text-white";
+            } else {
+                addContent.classList.remove('hidden');
+                addBtn.className = "px-3 py-1.5 rounded-lg font-bold transition bg-red-600 text-white";
+            }
+        }
+
+        // Video Player Modal Controls
+        function openVideoModal(id, title, channel, category, description) {
+            document.getElementById('modalVideoTitle').textContent = decodeURIComponent(title);
+            document.getElementById('modalVideoChannel').innerHTML = `<i class="fa-brands fa-youtube text-red-500 mr-1"></i> ${decodeURIComponent(channel)}`;
+            document.getElementById('modalVideoCategory').textContent = category;
+            document.getElementById('modalVideoDesc').textContent = decodeURIComponent(description) || "Tidak ada deskripsi tambahan.";
+            document.getElementById('youtubeIframe').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            document.getElementById('modalYoutubeLink').href = `https://www.youtube.com/watch?v=${id}`;
+            document.getElementById('videoModal').classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('youtubeIframe').src = "";
+            document.getElementById('videoModal').classList.add('hidden');
+        }
+
+        // Toggle Admin Modal
+        function toggleAdminModal() {
+            const modal = document.getElementById('adminModal');
+            if (modal) modal.classList.toggle('hidden');
+        }
+
+        // Extract YouTube ID from URL
+        function extractYouTubeId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : url.trim();
+        }
+
+        // Handle Adding New Video (Admin Manual Active)
+        function handleAddVideo(e) {
+            e.preventDefault();
+            const rawUrl = document.getElementById('inputUrl').value;
+            const title = document.getElementById('inputTitle').value;
+            const channel = document.getElementById('inputChannel').value;
+            const category = document.getElementById('inputCategory').value;
+            const badge = document.getElementById('inputBadge').value;
+            const description = document.getElementById('inputDesc').value;
+
+            const videoId = extractYouTubeId(rawUrl);
+
+            if (!videoId || videoId.length < 5) {
+                return;
+            }
+
+            const newVideo = {
+                id: videoId,
+                title,
+                channel,
+                category,
+                badge,
+                status: "active",
+                description
+            };
+
+            videos.unshift(newVideo);
+            localStorage.setItem('joyan_promoted_videos', JSON.stringify(videos));
+
+            document.getElementById('addVideoForm').reset();
+            toggleAdminModal();
+            renderVideos();
+        }
+
+        // Handle Client Order Submission to WhatsApp & Pending Dashboard
+        function handleClientOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('orderName').value;
+            const wa = document.getElementById('orderWa').value;
+            const url = document.getElementById('orderUrl').value;
+            const pkg = document.getElementById('orderPackage').value;
+            const category = document.getElementById('orderCategory').value;
+            const note = document.getElementById('orderNote').value;
+
+            const videoId = extractYouTubeId(url);
+
+            const newPendingItem = {
+                pendingId: "client_" + Date.now(),
+                id: videoId,
+                title: `Video Promosi - ${name}`,
+                channel: name,
+                category: category,
+                badge: "Hot",
+                package: pkg,
+                clientName: name,
+                clientWa: wa,
+                note: note,
+                description: `Pesanan dari ${name} (${pkg}). Catatan: ${note || '-'}`
+            };
+
+            pendingVideos.unshift(newPendingItem);
+            localStorage.setItem('joyan_pending_videos', JSON.stringify(pendingVideos));
+            renderPendingDashboard();
+
+            const waText = `Halo Joyan, saya mau pesan jasa promosi video YouTube:\n\n` +
+                           `- Nama/Channel: ${name}\n` +
+                           `- No. WA: ${wa}\n` +
+                           `- Paket: ${pkg}\n` +
+                           `- Kategori: ${category}\n` +
+                           `- Link Video: ${url}\n` +
+                           `- Catatan: ${note || '-'}\n\n` +
+                           `Mohon diproses, terima kasih!`;
+
+            window.open(`https://wa.me/?text=${encodeURIComponent(waText)}`, '_blank');
+            document.getElementById('clientOrderForm').reset();
+        }
+    </script>
+</body>
+</html>
